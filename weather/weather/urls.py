@@ -20,4 +20,5 @@ from myweather import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('delete/<cityname>', views.delete, name="delete"),
 ]

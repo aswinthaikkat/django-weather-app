@@ -22,6 +22,18 @@
         </nav>
 
     </div>
+
+    <div class="row justify-content-center" style=" margin : 10px ;">
+        <form action="{% url "home" %}" method="POST">
+            {% csrf_token %}
+            {{city}}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="row alert {{ msgcls }} justify-content-center" role="alert">
+        {{ msg }}
+    </div>
+    {% for weather in weather_list %}
     <div class="row justify-content-center">
         <div class="ext-white bg-light card mb-3" style=" margin : 10px;">
             <div class="row no-gutters">
@@ -30,77 +42,23 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">{{ weather.nameofcity}}</h5>
+                        <h5 class="card-title">
+                            <h1>{{ note}}</h1>{{ weather.nameofcity}}
+                        </h5>
                         <p class="card-text">The Temparature is : {{ weather.temperature}} Degree Celsius.<br>
                             The weather is {{ weather.weather_name}}. And it is {{ weather.description}}y.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><a href="{% url "delete" weather.nameofcity %}" class="text-dark">Delete
+                                City</a> </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row justify-content-center"">
-        <div class=" ext-white bg-light card mb-3" style=" margin : 10px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="{{ weather.icon }}" class="card-img" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ weather.nameofcity}}</h5>
-                    <p class="card-text">The Temparature is : {{ weather.temperature}} Degree Celsius.<br>
-                        The weather is {{ weather.weather_name}}. And it is {{ weather.description}}y.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+    {% endfor %}
 
 
-    <div class="row justify-content-center"">
 
-        <div class=" ext-white bg-light card mb-3" style=" margin : 10px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="{{ weather.icon }}" class="card-img" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ weather.nameofcity}}</h5>
-                    <p class="card-text">The Temparature is : {{ weather.temperature}} Degree
-                        Celsius.<br>
-                        The weather is {{ weather.weather_name}}. And it is {{ weather.description}}y.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
-    <div class="row justify-content-center"">
-
-        <div class=" ext-white bg-light card mb-3" style=" margin : 10px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="{{ weather.icon }}" class="card-img" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ weather.nameofcity}}</h5>
-                    <p class="card-text">The Temparature is : {{ weather.temperature}} Degree
-                        Celsius.<br>
-                        The weather is {{ weather.weather_name}}. And it is {{ weather.description}}y.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
-    <h>{{ note}}</h>
 
 
 
